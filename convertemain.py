@@ -17,6 +17,7 @@ def ConverteVideo():
         TxtDestino.config(state='normal')
         TxtOrigem.config(state='normal')
         comboFormato.config(state='normal')
+        comboFormatoInput.config(state='normal')
         TxtOrigem.delete(0,"end")
         TxtDestino.delete(0,"end")
 
@@ -45,12 +46,14 @@ def ConverteVideo():
         TxtDestino.config(state='disabled')
         TxtOrigem.config(state='disabled')
         comboFormato.config(state='disabled')
+        comboFormatoInput.config(state='disabled')
         tinicial.update()
 
         chamando = Conversor()
         chamando.origem = caminhoOrigem
         chamando.destino = caminhoFinal
         chamando.formato ="." + comboFormato.get()
+        chamando.formatoInput ="." + comboFormatoInput.get()
 
         if (chamando.origem  and chamando.destino):
             chamando.ExecultaConversao()
@@ -64,6 +67,7 @@ def ConverteVideo():
         TxtDestino.config(state='normal')
         TxtOrigem.config(state='normal')
         comboFormato.config(state='normal')
+        comboFormatoInput.config(state='normal')
         TxtOrigem.delete(0,"end")
         TxtDestino.delete(0,"end")
     except :
@@ -72,6 +76,7 @@ def ConverteVideo():
         TxtDestino.config(state='normal')
         TxtOrigem.config(state='normal')
         comboFormato.config(state='normal')
+        comboFormatoInput.config(state='normal')
         TxtOrigem.delete(0,"end")
         TxtDestino.delete(0,"end")
                 
@@ -101,7 +106,10 @@ LblDestino=Label(tinicial,bd=4,bg = 'SKyBlue1',fg='black',text='Destino',font=('
 TxtDestino=Entry(tinicial,bd=4,bg = 'white',fg='black',font=('arial',10,'bold'),width=50,)
 TxtDestino.grid(row=12, column=4)
 
-LblFormato=Label(tinicial,bd=4,bg = 'SKyBlue1',fg='black',text='Formato',font=('arial',10,'bold'),height=1).grid(row=11, column=5)
+# LblFormato=Label(tinicial,bd=4,bg = 'SKyBlue1',fg='black',text='Formato',font=('arial',10,'bold'),height=1).grid(row=11, column=5)
+comboFormatoInput = ttk.Combobox(tinicial,width=9,values=["mkv","mp4"],font=('arial',10,'bold'))
+comboFormatoInput.grid(row=11,column=5)
+comboFormatoInput.current(0)
 comboFormato = ttk.Combobox(tinicial,width=9,values=["mp4","mkv"],font=('arial',10,'bold'))
 comboFormato.grid(row=12,column=5)
 comboFormato.current(0)

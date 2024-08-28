@@ -5,7 +5,7 @@ import sys
 if sys.platform == 'linux':
     comando_ffmpeg = 'ffmpeg'
 else:
-    comando_ffmpeg = r'ffmpeg\ffmpeg.exe'
+    comando_ffmpeg = r'ffmpeg\bin\ffmpeg.exe'
 
 codec_video = '-c:v libx264'
 crf = '-crf 18'
@@ -15,16 +15,17 @@ bitrate_audio = '-b:a 320k'
 debug = ''
 
 class Conversor:
-    def __init__(self ,origem="",destino="", formato = ''):
+    def __init__(self ,origem="",destino="", formato = '', formatoInput = ''):
         self.origem = origem
         self.destino = destino
         self.formato = formato
+        self.formatoInput = formatoInput
 
     def ExecultaConversao(self):
         try:
             for raiz, pastas, arquivos in os.walk(self.origem):
                 for arquivo in arquivos:
-                    if not fnmatch.fnmatch(arquivo, '*.mkv'):
+                    if not fnmatch.fnmatch(arquivo, '*.'+ self.formatoInput):
                         continue
 
                     caminho_completo = os.path.join(raiz, arquivo)
