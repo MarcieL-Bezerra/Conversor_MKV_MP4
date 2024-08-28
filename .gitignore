@@ -1,0 +1,7 @@
+virtual-env/
+.vscode/
+app.py
+__pycache__/
+Relatório*
+*.xlsx
+logs/
